@@ -22,7 +22,7 @@ SI DEICING
 ### Arrival
 ```
 MVT
-SD200/21.PMDFG.CDG
+SD200/21.PMDFG.FRA
 AA1515/1520
 ```
 ### Delay
@@ -31,7 +31,7 @@ AA1515/1520
 MVT
 SD200/21.PMDFG.CDG
 ED211125
-DL72/0025
+DL72
 ```
 #### With indefinite delay
 Time is set to when new information is expected.
@@ -63,7 +63,6 @@ DL72/0025
 MVT
 SD200/21.PMDFG.CDG
 AD1115 RR1125
-DL72/0015
 SI ABORTED TAKEOFF
 ```
 ### Return from Airborne
@@ -71,6 +70,13 @@ SI ABORTED TAKEOFF
 MVT
 SD200/21.PMDFG.CDG
 FR1200/1215
+SI BIRDSTRIKE
+```
+Also an option to send arrival message, accompanied with `ASM RRT` message - But that´s another story..
+```
+MVT
+SD200/21.PMDFG.CDG
+AA1200/1215
 SI BIRDSTRIKE
 ```
 ### Revised ETA
