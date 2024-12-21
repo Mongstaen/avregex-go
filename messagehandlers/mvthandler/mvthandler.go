@@ -56,7 +56,10 @@ func newHandleMVTType(mvtType string) string {
 		pattern = `(?i)([A-Z]{3})\n([A-Z0-9]{3,})\/([0-9]{2})\.([A-Z0-9]{5,}).([A-Z]{3})\n([A-Z]{2})([0-9]{4,6})\/([0-9]{4,6}) [A-Z]{2}([0-9]{4}) ([A-Z]{3})\n((?s).*)`
 	case "ED":
 		log.Println("Handled ED Movement Type")
-		pattern = "ED"
+		pattern = `(?i)([A-Z]{3})\n([A-Z0-9]{3,})\/([0-9]{2})\.([A-Z0-9]{5,}).([A-Z]{3})\n([A-Z]{2})([0-9]{4,6})\n((?s).*)`
+	case "NI":
+		log.Println("Handled NI Movement Type")
+		pattern = `(?i)([A-Z]{3})\n([A-Z0-9]{3,})\/([0-9]{2})\.([A-Z0-9]{5,}).([A-Z]{3})\n([A-Z]{2})([0-9]{4,6})\n((?s).*)`
 	case "AA":
 		log.Println("Handled AA Movement Type")
 		pattern = `(?i)([A-Z]{3})\n([A-Z0-9]{3,})\/([0-9]{2})\.([A-Z0-9]{5,}).([A-Z]{3})\n([A-Z]{2})([0-9]{4,6})\/([0-9]{4,6})\n((?s).*)`
@@ -120,7 +123,7 @@ func NewProcessMVTMessage(text string) {
 	regex := regexp.MustCompile(pattern)
 	result := regex.FindStringSubmatch(text)
 
-	fmt.Println(result[4])
+	fmt.Println(result[0], "\n")
 	/* 	message := Message{
 	   		messageType:          result[1],
 	   		flightNumber:         result[2],

@@ -57,6 +57,19 @@ SD200/21.PMDFG.CDG
 AA1515/1520
 FLD22
 `
+	dly := `
+MVT
+SD200/22.PMDFG.CDG
+ED221125
+DL72/0025
+`
+	ni := `
+MVT
+SD200/22.PMDFG.CDG
+NI221150
+SI ENGINE TROUBLE
+`
+
 	text := `
 MVT
 AA1203/07.LNREG.BGO
@@ -88,6 +101,8 @@ DLA/02B//
 	//fmt.Println(text)
 	processNewMessage(dep)
 	processNewMessage(arr)
+	processNewMessage(dly)
+	processNewMessage(ni)
 	processNewMessage(text)
 	processNewMessage(mvt)
 	//processNewMessage(ldm)
