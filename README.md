@@ -17,3 +17,6 @@ Thinking about this, the task is much larger than i thought. Lets start with the
 - Return from airborne
 - Revised ETA
 - Arrival Taxi Time Variance
+
+https://regex101.com/r/QjaY7e/1
+https://regex101.com/r/HzOKCT/1
