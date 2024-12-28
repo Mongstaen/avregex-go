@@ -5,8 +5,6 @@ import (
 	"log"
 	"regexp"
 	"strings"
-
-	"github.com/mongstaen/avregex-go/messagehandlers/mvthandler"
 )
 
 func processNewMessage(text string) {
@@ -19,7 +17,7 @@ func processNewMessage(text string) {
 	case "PDM":
 		processPDMMessage(text)
 	case "MVT":
-		mvthandler.NewProcessMVTMessage(text)
+		processMVTMessage(text)
 	case "LDM":
 		fmt.Println("LDM")
 	case "COR":
@@ -27,6 +25,54 @@ func processNewMessage(text string) {
 	default:
 		fmt.Println("Unknown Message Type")
 	}
+}
+
+func processMVTMessage(text string) {
+	text = strings.TrimSpace(text)
+	lines := strings.Split(text, "\n")
+	fmt.Println(text)
+
+	// Handle line 3
+	parts := strings.Split(lines[2], " ")
+
+	for _, part := range parts {
+		//fmt.Println(part)
+		if strings.HasPrefix(part, "ED") {
+			fmt.Println("Part starts with ED:", part)
+		}
+		if strings.HasPrefix(part, "AD") {
+			fmt.Println("Part starts with AD:", part)
+		}
+		if strings.HasPrefix(part, "EA") {
+			fmt.Println("Part starts with EA:", part)
+		}
+		if strings.HasPrefix(part, "AA") {
+			fmt.Println("Part starts with AA:", part)
+		}
+		if strings.HasPrefix(part, "EO") {
+			fmt.Println("Part starts with EO:", part)
+		}
+		if strings.HasPrefix(part, "NI") {
+			fmt.Println("Part starts with NI:", part)
+		}
+		if len(part) == 3 {
+			fmt.Println("Flight Destination:", part)
+		}
+	}
+
+	for _, line := range lines[3:] {
+		if strings.HasPrefix(line, "PX") {
+			numberOfPassengers := strings.TrimPrefix(line, "PX")
+			fmt.Println("PX is present:", numberOfPassengers)
+		}
+	}
+	if strings.HasPrefix(lines[3], "DL") {
+		fmt.Println("DL is present")
+		// TODO Handle DL..
+	}
+
+	fmt.Println("\n")
+
 }
 
 func processPDMMessage(text string) {
@@ -44,6 +90,7 @@ func processCORMessage(text string) {
 }
 func main() {
 	dep := `
+PDM
 MVT
 SD200/21.PMDFG.CDG
 AD1100/1115 EA1500 FRA
